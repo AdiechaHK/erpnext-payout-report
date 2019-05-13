@@ -1,0 +1,33 @@
+{
+  "name": "erpnext-payout-report",
+  "version": "1.0.0",
+  "description": "ERPNext Payout Report converter to ICICI standard bank salary upload format",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdiechaHK/erpnext-payout-report.git"
+  },
+  "keywords": [
+    "erpnext",
+    "payout",
+    "report",
+    "salary",
+    "report",
+    "icici",
+    "bank",
+    "upload",
+    "file"
+  ],
+  "author": "Harikrushna V. Adiecha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AdiechaHK/erpnext-payout-report/issues"
+  },
+  "homepage": "https://github.com/AdiechaHK/erpnext-payout-report#readme",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
