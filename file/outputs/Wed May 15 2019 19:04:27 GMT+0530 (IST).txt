@@ -1,8 +1,0 @@
-535180000
-084805500000INR0848D      20000.00                Salary of Apr
-111222333444INR1112C      10000.00                Salary of May
-111222333444INR1112C          0.00                Salary of May
-111222333444INR1112C      10000.00                Salary of May
-123456781234INR1234C          0.00                Salary of May
-123456781234INR1234C          0.00                Salary of May
-123456781234INR1234C          0.00                Salary of May

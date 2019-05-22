@@ -1,44 +1,32 @@
 require('dotenv').config();
 
-global.debug = {
-	log: function(str) {
-		if(process.env.DEBUG == 'true') {
-			console.log(str);
-		}
-	}
-};
+// Some bootstrapping tasks
+require('./bootstrap')();
 
-function getMonth() {
-	let month = 'May';
-	if(process.argv.length > 2) {
-		let possibleMonth = process.argv[2];
-		let listOfMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-		if(listOfMonths.indexOf(possibleMonth) != -1) return possibleMonth;
-	}
-	return month;
-}
-
+// Actual function call
 (async function() {
 
-	var Connection = require("./erpnext/connection");
-	var file = require("./file/maker")
-	var Data = require("./data/salary-format");
-	var connection = new Connection;
+  // Collect all the Required dependancies
+  var Connection = require("./erpnext/connection");
+  var file       = require("./file/maker")
+  var Data       = require("./data/salary-format");
+  var erpConf    = require("./erpnext/config.js");
+  var fileConf   = require("./file/config.js");
 
-	var month = getMonth();
+  // Create new connection to ERP Next
+  var connection = new Connection;
 
-	try {
-		var login = await connection.login();
-		var login = true;
-		if(login === true) {
-			let json = await connection.getReportJson('Employee Payout', {month});
-			let data = Data.convert(json, month);
-			let filename = "Salary of " + month + ".txt";
-			file.make(filename, 'icici-salary-format', {data});
-			debug.log("File '" + filename + "' has been generated succesfully.");
-		}
-	} catch(e) {
-		debug.log(e);
-	}
+  try {
+    var login = await connection.login();
+    if(login === true) {
+      let json = await connection.getReportJson(erpConf.report, erpConf.filters);
+      file.saveFormat(fileConf.format, json, erpConf.filters);
+      debug.log("File '" + filename + "' has been generated succesfully.");
+    } else {
+      console.error("Could not logged in to your ERP Next, please check credentials.");
+    }
+  } catch(e) {
+    debug.log(e);
+  }
 
 })();
