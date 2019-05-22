@@ -1,0 +1,4 @@
+This is a sample format, you can modify it by copying file/default/format.txt to format/{yourforamtname}/format.txt
+and then you can modify that copied file.
+
+** Better not to modify direct `file/default/format.txt` file, as it's default when format is not given.

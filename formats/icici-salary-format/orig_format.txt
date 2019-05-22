@@ -1,0 +1,3 @@
+535180000
+{{#each data}}{{fixedSize ac_no 12}}    {{fixedSize currency 3}}{{fixedSize branch 4}}    {{fixedSize type 1}}{{fixedSize (decPoint salary 2) 15 'right'}}{{fixedSize particular 30}}
+{{/each}}
